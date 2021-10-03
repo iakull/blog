@@ -10,13 +10,11 @@ $result = mysqli_fetch_all($result);
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>Blog</title>
 </head>
@@ -38,6 +36,20 @@ $result = mysqli_fetch_all($result);
         </div>
     </nav>
     <main class="container">
+        <div class="p-4 p-md-5 mb-2 row rounded">
+            <div class="col-md-6 px-0">
+                <p>Фильтровать по дате:</p>
+                <button type="button" class="btn btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button onclick="window.location.href = 'http://localhost/add.html'" type="button" class="btn btn-outline-primary">Добавить новость</button>
+                <button type="button" class="btn btn-outline-danger">Удалить новость</button>
+            </div>
+        </div>
         <div class="row mb-2">
             <?php
             foreach ($result as $item) {
