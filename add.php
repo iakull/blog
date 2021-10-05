@@ -15,7 +15,7 @@
                 <h2>Добавление новости</h2>
             </div>
             <div class="row g-5">
-                <form action="./upload.php" method="post" class="needs-validation" enctype="multipart/form-data">
+                <form enctype="multipart/form-data" method="post" action="./crud/create.php" class="needs-validation">
                     <div class="row g-3">
                         <div class="col-12">
                             <label for="title" class="form-label">Название</label>
@@ -25,12 +25,12 @@
                             </div>
                         </div>
                         <div>
-                            <label for="start">Дата публикации:</label>
+                            <label for="date">Дата публикации:</label>
                             <input type="date" name="date">
                         </div>
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Картинка</label>
-                            <input class="form-control" type="file" name="img" id="formFile">
+                            <label for="anyfile" class="form-label">Картинка</label>
+                            <input class="form-control" type="file" name="anyfile" id="anyfile">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Описание</label>
@@ -42,7 +42,7 @@
             </div>
         </main>
     </div>
-    <script src="form-validation.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 

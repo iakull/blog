@@ -37,7 +37,7 @@ $result = mysqli_fetch_all($result);
     </nav>
     <main class="container">
         <div class="p-4 p-md-5 mb-2 row rounded">
-            <div class="col-md-6 px-0">
+            <div class="col-md-6">
                 <p>Фильтровать по дате:</p>
                 <button type="button" class="btn btn-secondary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
@@ -46,8 +46,7 @@ $result = mysqli_fetch_all($result);
                 </button>
             </div>
             <div class="col-md-6">
-                <button onclick="window.location.href = 'http://localhost/add.html'" type="button" class="btn btn-outline-primary">Добавить новость</button>
-                <button type="button" class="btn btn-outline-danger">Удалить новость</button>
+                <button onclick="window.location.href='http://localhost/add.php'" type="button" class="btn btn-outline-primary">Добавить новость</button>
             </div>
         </div>
         <div class="row mb-2">
@@ -57,13 +56,15 @@ $result = mysqli_fetch_all($result);
                 <div class="col-md-6">
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div class="col p-4 d-flex flex-column position-static">
+                            <h7><?= $item[0] ?></h7>
                             <h3 class="mb-0"><?= $item[1] ?></h3>
                             <div class="mb-1 text-muted"><?= $item[2] ?></div>
-                            <p class="card-text mb-auto"><?= $item[4] ?> </p>
-                            <a href="#" class="stretched-link">Continue reading</a>
+                            <p class="card-text mb-auto"><?= $item[4] ?></p>
+                            <a href="edit.php?id=<?= $item[0] ?>" class="link-primary">&#9998; Изменить</a>
+                            <a href="./crud/delete.php?id=<?= $item[0] ?>" class="text-danger">&#10006; Удалить</a>
                         </div>
                         <div class="col-auto d-none d-lg-block">
-                            <img width="280" height="250" alt="imgpost" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($item[3]) ?>" />
+                            <img width="280" height="250" alt="Тут должна быть картинка, но ее нет" src="data:image/jpg;charset=utf8;base64,<?= base64_encode($item[3]) ?>" />
                         </div>
                     </div>
                 </div>
