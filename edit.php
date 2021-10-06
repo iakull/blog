@@ -43,7 +43,7 @@ $result = mysqli_fetch_assoc($result);
                         </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Картинка</label>
-                            <input class="form-control" type="file" name="img">
+                            <input class="form-control" type="file" name="imgfile">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Описание</label>

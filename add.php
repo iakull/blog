@@ -30,7 +30,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="anyfile" class="form-label">Картинка</label>
-                            <input class="form-control" type="file" name="anyfile" id="anyfile">
+                            <input class="form-control" type="file" name="imgfile" id="anyfile">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Описание</label>
