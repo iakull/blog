@@ -4,13 +4,23 @@ error_reporting(E_ALL);
 require_once './config/connect.php';
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $link = mysqli_connect($host, $user, $password, $database);
-$query = "SELECT * FROM news";
+
+$limit = isset($_SESSION['records-limit']) ? $_SESSION['records-limit'] : 6;
+$page = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
+
+$paginationStart = ($page - 1) * $limit;
+
+$query = "SELECT * FROM news LIMIT $paginationStart, $limit";
 $result = mysqli_query($link, $query);
 $result = mysqli_fetch_all($result);
 
-$page = $_GET['page'];
-$count = 10;
-$page_count = floor(count($result) / $count);
+$query2 = "SELECT * FROM news";
+$result2 = mysqli_query($link, $query2);
+$rowcount = mysqli_num_rows($result2);
+
+$totalPages = ceil($rowcount / $limit);
+$prev = $page - 1;
+$next = $page + 1;
 ?>
 
 <!doctype html>
@@ -78,11 +88,35 @@ $page_count = floor(count($result) / $count);
         </div>
     </main>
     <div class="container">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item <?php if ($page <= 1) {
+                                            echo 'disabled';
+                                        } ?>">
+                    <a class="page-link" href="<?php if ($page <= 1) {
+                                                    echo '#';
+                                                } else {
+                                                    echo "?page=" . $prev;
+                                                } ?>">Previous</a>
+                </li>
 
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                    <li class="page-item <?php if ($page == $i) {
+                                                echo 'active';
+                                            } ?>">
+                        <a class="page-link" href="index.php?page=<?= $i; ?>"> <?= $i; ?> </a>
+                    </li>
+                <?php endfor; ?>
 
+                <li class="page-item <?php if ($page >= $totalPages) {
+                                            echo 'disabled';
+                                        } ?>">
+                    <a class="page-link" href="<?php if ($page >= $totalPages) {
+                                                    echo '#';
+                                                } else {
+                                                    echo "?page=" . $next;
+                                                } ?>">Next</a>
+                </li>
             </ul>
         </nav>
     </div>
