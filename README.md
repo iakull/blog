@@ -1,4 +1,3 @@
 # blog
-Blog written on PHP
-CRUD demo
-php+mysql
+Blog written on PHP(mysql)
+CRUD demonstration
